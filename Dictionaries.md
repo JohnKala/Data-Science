@@ -43,7 +43,7 @@ Topics covered:
 
 ```python
 
-`# Using curly braces
+# Using curly braces
 empty_dict = {}
 print(type(empty_dict))  # Output: <class 'dict'>
 
@@ -54,7 +54,7 @@ Creating a populated dictionary:
 
 ```python
 
-`student = {
+student = {
     "name": "Krish",
     "age": 32,
     "grade": 24
@@ -64,7 +64,7 @@ print(student)`
 If duplicate keys are provided, the last one will overwrite the previous:
 
 ```python
-`student = {"name": "Krish", "age": 32, "name": 24}
+student = {"name": "Krish", "age": 32, "name": 24}
 print(student)  # name: 24`
 ```
 * * * * *
@@ -91,11 +91,11 @@ print(student.get("last_name", "Not Available"))  # Output: Not Available`
 
 -   You can **update**, **add**, or **delete** elements.
 
-python
+```python
 
-CopyEdit
 
-`# Update
+
+# Update
 student["age"] = 33
 
 # Add
@@ -103,16 +103,13 @@ student["address"] = "India"
 
 # Delete
 del student["grade"]`
-
+```
 * * * * *
 
 ### 🧰 5. Dictionary Methods
 
-python
-
-CopyEdit
-
-`student = {"name": "Krish", "age": 33, "address": "India"}
+```python
+student = {"name": "Krish", "age": 33, "address": "India"}
 
 # Get all keys
 print(student.keys())
@@ -122,16 +119,14 @@ print(student.values())
 
 # Get all items
 print(student.items())`
-
+```
 * * * * *
 
 ### 🧠 6. Shallow Copy vs Direct Assignment
 
-python
+```python
 
-CopyEdit
-
-`# Direct assignment creates a reference
+# Direct assignment creates a reference
 student_copy = student
 student["name"] = "Krish 2"
 print(student_copy["name"])  # Output: Krish 2 (same memory reference)
@@ -140,16 +135,14 @@ print(student_copy["name"])  # Output: Krish 2 (same memory reference)
 student_copy_1 = student.copy()
 student["name"] = "Krish 3"
 print(student_copy_1["name"])  # Output: Krish 2`
-
+```
 * * * * *
 
 ### 🔁 7. Iterating Over Dictionaries
 
-python
+```python
 
-CopyEdit
-
-`# Over keys
+# Over keys
 for key in student.keys():
     print(key)
 
@@ -160,16 +153,13 @@ for value in student.values():
 # Over key-value pairs
 for key, value in student.items():
     print(f"{key}: {value}")`
-
+```
 * * * * *
 
 ### 🧩 8. Nested Dictionaries
 
-python
-
-CopyEdit
-
-`students = {
+```python
+students = {
     "student1": {"name": "Krish", "age": 32},
     "student2": {"name": "Peter", "age": 35}
 }
@@ -182,32 +172,27 @@ for student_id, student_info in students.items():
     print(f"ID: {student_id}")
     for key, value in student_info.items():
         print(f"{key}: {value}")`
-
+```
 * * * * *
 
 ### 🧮 9. Dictionary Comprehension
 
-python
-
-CopyEdit
-
-`# Simple example
+```python
+# Simple example
 squares = {x: x**2 for x in range(5)}
 
 # Conditional comprehension (even numbers)
 even_squares = {x: x**2 for x in range(10) if x % 2 == 0}`
-
+```
 * * * * *
 
 ### ✅ 10. Practical Examples
 
 #### Count frequency of elements in a list
 
-python
+```python
 
-CopyEdit
-
-`numbers = [1,2,2,3,3,3,4,4,4,4]
+numbers = [1,2,2,3,3,3,4,4,4,4]
 frequency = {}
 
 for number in numbers:
@@ -217,18 +202,16 @@ for number in numbers:
         frequency[number] = 1
 
 print(frequency)  # Output: {1: 1, 2: 2, 3: 3, 4: 4}`
-
+```
 #### Merging Dictionaries
 
-python
+```python
 
-CopyEdit
-
-`dict1 = {'a': 1, 'b': 2}
+dict1 = {'a': 1, 'b': 2}
 dict2 = {'b': 3, 'c': 4}
 
 # Merging using **
 merged_dict = {**dict1, **dict2}
 print(merged_dict)  # Output: {'a': 1, 'b': 3, 'c': 4}`
-
+```
 * * * * *
