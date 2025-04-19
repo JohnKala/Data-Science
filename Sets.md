@@ -1,193 +1,170 @@
-📘 Dictionaries in Python: Comprehensive Notes
+Python Sets: Notes from Udemy Lecture
+=====================================
 
-### 🔹 Overview
-
-Topics covered:
-1.  Introduction to dictionaries
-2.  Creating dictionaries
-3.  Accessing elements
-4.  Modifying elements
-5.  Common methods
-6.  Iterating through dictionaries
-7.  Nested dictionaries
-8.  Dictionary comprehension
-9.  Practical examples
+📘 Introduction
+---------------
+-   Sets are **built-in data types** in Python.
+-   Used to store **collections of unique items**.
+-   **Unordered** (no indexing) and **no duplicates allowed**.
+-   Useful for:
+    -   Membership testing
+    -   Removing duplicates
+    -   Performing set operations (union, intersection, etc.)
 
 * * * * *
 
-### 📌 1. Introduction to Dictionaries
+🛠 Creating Sets
+----------------
 
--   A **dictionary** is an **unordered** collection of **key-value pairs**.
--   **Keys** must be:
-    -   Unique
-    -   Immutable (e.g., strings, numbers, tuples)
+```python
+my_set = {1, 2, 3, 4, 5}
+print(my_set)
+print(type(my_set))  # <class 'set'>
+```
 
--   **Values** can be any Python object.
+### 🌀 Empty Set
+
+```python
+my_empty_set = set()
+print(type(my_empty_set))  # <class 'set'>
+```
+
+### 📥 From Lists or Tuples
+
+```python
+my_set = set([1, 2, 3, 4, 5, 6])
+print(my_set)
+```
+
+🔁 **Duplicates are automatically removed:**
+
+```python
+my_set = set([1, 2, 3, 4, 5, 6, 5, 6])
+print(my_set)  # {1, 2, 3, 4, 5, 6}
+```
 
 * * * * *
 
-### 🛠️ 2. Creating Dictionaries
+🔧 Basic Set Operations
+-----------------------
+
+### ➕ Adding Elements
 
 ```python
-# Using curly braces
-empty_dict = {}
-print(type(empty_dict))  # Output: <class 'dict'>
-
-# Using dict() constructor
-empty_dict = dict()`
+my_set.add(7)
+print(my_set)
 ```
-Creating a populated dictionary:
+
+Adding a duplicate does nothing:
 
 ```python
-student = {
-    "name": "Krish",
-    "age": 32,
-    "grade": 24
-}
-print(student)`
+my_set.add(7)
+print(my_set)  # No change
 ```
-If duplicate keys are provided, the last one will overwrite the previous:
+
+### ➖ Removing Elements
 
 ```python
-student = {"name": "Krish", "age": 32, "name": 24}
-print(student)  # name: 24`
+my_set.remove(3)  # Raises KeyError if 3 not present
 ```
-* * * * *
-
-### 🔍 3. Accessing Dictionary Elements
 
 ```python
-student = {"name": "Krish", "age": 32, "grade": "A"}
-
-# Direct access
-print(student["grade"])  # Output: A
-
-# Using get()
-print(student.get("grade"))  # Output: A
-print(student.get("last_name"))  # Output: None
-print(student.get("last_name", "Not Available"))  # Output: Not Available`
+my_set.discard(10)  # No error if element is absent`
 ```
-* * * * *
-
-### ✏️ 4. Modifying Dictionary Elements
-
--   Dictionaries are **mutable**.
--   You can **update**, **add**, or **delete** elements.
+### 🎲 Popping Elements (Removes a random element)
 
 ```python
-# Update
-student["age"] = 33
+removed = my_set.pop()
+print(removed)
+print(my_set)
+```
 
-# Add
-student["address"] = "India"
+### 🧹 Clearing All Elements
 
-# Delete
-del student["grade"]`
+```python
+my_set.clear()
+print(my_set)  # set()
 ```
 * * * * *
 
-### 🧰 5. Dictionary Methods
+🧪 Membership Testing
+---------------------
 
 ```python
-student = {"name": "Krish", "age": 33, "address": "India"}
-
-# Get all keys
-print(student.keys())
-
-# Get all values
-print(student.values())
-
-# Get all items
-print(student.items())`
+3 in my_set  # True
+10 in my_set  # False
 ```
 * * * * *
 
-### 🧠 6. Shallow Copy vs Direct Assignment
+➗ Mathematical Set Operations
+-----------------------------
 
 ```python
-# Direct assignment creates a reference
-student_copy = student
-student["name"] = "Krish 2"
-print(student_copy["name"])  # Output: Krish 2 (same memory reference)
+set1 = {1, 2, 3, 4, 5, 6}
+set2 = {4, 5, 6, 7, 8, 9}
+```
 
-# Shallow copy creates a new object
-student_copy_1 = student.copy()
-student["name"] = "Krish 3"
-print(student_copy_1["name"])  # Output: Krish 2`
+### 🔗 Union
+
+```python
+set1.union(set2)
+```
+
+### 🔀 Intersection
+
+```python
+set1.intersection(set2)
+```
+
+### 🔄 Intersection Update
+
+```python
+set1.intersection_update(set2)
+```
+### ➖ Difference
+
+```python
+set1.difference(set2)
+```
+
+### 🔁 Difference Update
+
+```python
+set1.difference_update(set2)
+```
+
+### 🪞 Symmetric Difference (unique elements from both sets)
+
+```python
+set1.symmetric_difference(set2)
 ```
 * * * * *
 
-### 🔁 7. Iterating Over Dictionaries
+🧮 Subset & Superset
+--------------------
 
 ```python
-# Over keys
-for key in student.keys():
-    print(key)
-
-# Over values
-for value in student.values():
-    print(value)
-
-# Over key-value pairs
-for key, value in student.items():
-    print(f"{key}: {value}")`
+set1.issubset(set2)
+set1.issuperset(set2)
 ```
 * * * * *
 
-### 🧩 8. Nested Dictionaries
+🧑‍💻 Use Cases
+---------------
+
+### 🚿 Removing Duplicates from a List
 
 ```python
-students = {
-    "student1": {"name": "Krish", "age": 32},
-    "student2": {"name": "Peter", "age": 35}
-}
-
-# Access nested value
-print(students["student2"]["age"])  # Output: 35
-
-# Iterating
-for student_id, student_info in students.items():
-    print(f"ID: {student_id}")
-    for key, value in student_info.items():
-        print(f"{key}: {value}")`
+my_list = [1, 2, 2, 3, 4, 4, 5]
+unique_items = set(my_list)
+print(unique_items)`
 ```
-* * * * *
-
-### 🧮 9. Dictionary Comprehension
+### 📊 Counting Unique Words in Text
 
 ```python
-# Simple example
-squares = {x: x**2 for x in range(5)}
-
-# Conditional comprehension (even numbers)
-even_squares = {x: x**2 for x in range(10) if x % 2 == 0}`
+text = "In this tutorial we are discussing about sets"
+words = text.split()
+unique_words = set(words)
+print(unique_words)
+print("Count:", len(unique_words))
 ```
-* * * * *
-
-### ✅ 10. Practical Examples
-
-#### Count frequency of elements in a list
-
-```python
-numbers = [1,2,2,3,3,3,4,4,4,4]
-frequency = {}
-
-for number in numbers:
-    if number in frequency:
-        frequency[number] += 1
-    else:
-        frequency[number] = 1
-
-print(frequency)  # Output: {1: 1, 2: 2, 3: 3, 4: 4}`
-```
-#### Merging Dictionaries
-
-```python
-dict1 = {'a': 1, 'b': 2}
-dict2 = {'b': 3, 'c': 4}
-
-# Merging using **
-merged_dict = {**dict1, **dict2}
-print(merged_dict)  # Output: {'a': 1, 'b': 3, 'c': 4}`
-```
-* * * * *
