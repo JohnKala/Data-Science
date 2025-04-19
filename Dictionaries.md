@@ -41,9 +41,7 @@ Topics covered:
 
 ### 🛠️ 2. Creating Dictionaries
 
-python
-
-CopyEdit
+```python
 
 `# Using curly braces
 empty_dict = {}
@@ -51,12 +49,10 @@ print(type(empty_dict))  # Output: <class 'dict'>
 
 # Using dict() constructor
 empty_dict = dict()`
-
+```
 Creating a populated dictionary:
 
-python
-
-CopyEdit
+```python
 
 `student = {
     "name": "Krish",
@@ -64,23 +60,18 @@ CopyEdit
     "grade": 24
 }
 print(student)`
-
+```
 If duplicate keys are provided, the last one will overwrite the previous:
 
-python
-
-CopyEdit
-
+```python
 `student = {"name": "Krish", "age": 32, "name": 24}
 print(student)  # name: 24`
-
+```
 * * * * *
 
 ### 🔍 3. Accessing Dictionary Elements
 
-python
-
-CopyEdit
+```python
 
 `student = {"name": "Krish", "age": 32, "grade": "A"}
 
@@ -91,7 +82,7 @@ print(student["grade"])  # Output: A
 print(student.get("grade"))  # Output: A
 print(student.get("last_name"))  # Output: None
 print(student.get("last_name", "Not Available"))  # Output: Not Available`
-
+```
 * * * * *
 
 ### ✏️ 4. Modifying Dictionary Elements
